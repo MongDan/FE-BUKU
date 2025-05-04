@@ -4,8 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
-
-  // Navigation handlers
   const navigateToStatusBuku = () => navigate("/statusBuku");
   const navigateToKategori = () => navigate("/kategori");
   const navigateToBooks = () => navigate("/buku");

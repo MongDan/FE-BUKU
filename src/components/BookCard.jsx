@@ -1,8 +1,6 @@
-// components/BookCard.jsx
 import React from "react";
 
 const BookCard = ({ book, statusOptions, onEdit, onDelete, isDeleting }) => {
-  // Find status name from either the book object or statusOptions array
   const statusName =
     book.statusBuku?.nama ||
     statusOptions.find((s) => s.id === book.statusBukuId)?.nama ||

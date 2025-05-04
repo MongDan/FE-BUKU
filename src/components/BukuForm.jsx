@@ -1,4 +1,3 @@
-// components/BookForm.jsx
 import React, { useState, useEffect } from "react";
 import { addBook, updateBook } from "../services/api";
 
@@ -19,7 +18,6 @@ const BookForm = ({
     statusBukuId: 1, // Default to available (1)
   });
 
-  // Reset form or populate with edit data when editBook changes
   useEffect(() => {
     if (editBook) {
       setFormData({

@@ -1,4 +1,3 @@
-// components/BookList.jsx
 import React, { useState } from "react";
 import { deleteBook } from "../services/api";
 import BookCard from "./BookCard";
@@ -44,4 +43,3 @@ const BookList = ({ books, statusOptions, onEditBook, onDeleteBook, onError }) =
 };
 
 export default BookList;
-

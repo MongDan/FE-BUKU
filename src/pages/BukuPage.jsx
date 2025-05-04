@@ -1,12 +1,7 @@
-// BukuPage.jsx - Main component file
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
-import {
-  fetchBooks,
-  fetchStatusOptions,
-  getTokenFromCookies,
-} from "../services/api";
+import { fetchBooks, fetchStatusOptions, getTokenFromCookies} from "../services/api";
 import BookForm from "../components/BukuForm";
 import BookList from "../components/BookList";
 import ErrorMessage from "../components/ErrorMessage";
@@ -22,12 +17,10 @@ const BukuPage = () => {
   const [error, setError] = useState("");
   const [editBook, setEditBook] = useState(null);
 
-  // Initial fetch on component mount or when returning to the page
   useEffect(() => {
     loadBooks();
     loadStatusOptions();
 
-    // Store books data in sessionStorage when component unmounts
     return () => {
       if (books.length > 0) {
         sessionStorage.setItem("booksData", JSON.stringify(books));
@@ -35,7 +28,6 @@ const BukuPage = () => {
     };
   }, []);
 
-  // Load books from sessionStorage when navigation occurs
   useEffect(() => {
     const storedBooks = sessionStorage.getItem("booksData");
     if (storedBooks && books.length === 0) {
@@ -63,7 +55,6 @@ const BukuPage = () => {
       setStatusOptions(options);
     } catch (err) {
       console.error("Error fetching status options:", err);
-      // Try to get from sessionStorage if API fails
       const storedStatusOptions = sessionStorage.getItem("statusOptions");
       if (storedStatusOptions) {
         setStatusOptions(JSON.parse(storedStatusOptions));
