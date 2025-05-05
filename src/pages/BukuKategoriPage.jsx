@@ -1,8 +1,15 @@
 import React from 'react'
+import { Navbar } from '../components/Navbar'
 
-const BukuKategoriPage = () => {
+
+function BukuKategoriPage() {
+  
+
   return (
-    <div>BukuKategoriPage</div>
+    <div>
+      <Navbar/>
+      
+    </div>
   )
 }
 

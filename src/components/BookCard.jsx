@@ -7,12 +7,9 @@ const BookCard = ({ book, statusOptions, onEdit, onDelete, isDeleting }) => {
     "Unknown";
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
+    <div className="bg-gray-100 rounded-lg shadow-xl p-6">
       <h3 className="font-semibold text-lg mb-3">{book.judul}</h3>
       <div className="space-y-2">
-        <p className="text-gray-700">
-          <span className="font-medium">Judul:</span> {book.judul}
-        </p>
         <p className="text-gray-700">
           <span className="font-medium">Pengarang:</span> {book.pengarang}
         </p>

@@ -5,6 +5,8 @@ import BukuPage from "./pages/BukuPage";
 import UserPage from "./pages/UserPage";
 import StatusBukuPage from "./pages/StatusBukuPage";
 import KategoriPage from "./pages/KategoriPage";
+import BukuKategoriPage from "./pages/BukuKategoriPage";
+
 
 function App() {
   return (
@@ -16,7 +18,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/buku" element={<BukuPage />} />
         <Route path="/user" element={<UserPage />} />
-        <Route path="/statusbuku" element={<StatusBukuPage />} />
+        <Route path="/statusBuku" element={<StatusBukuPage />} />
+        <Route path="/bukuKategori" element={<BukuKategoriPage />} />
       </Routes>
     </Router>
   );

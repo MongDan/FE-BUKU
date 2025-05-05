@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 import { fetchBooks, fetchStatusOptions, getTokenFromCookies} from "../services/api";
 import BookForm from "../components/BukuForm";
@@ -90,7 +90,7 @@ const BukuPage = () => {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Navigation Bar */}
-      <Navbar/>
+      <Navbar />
 
       {/* Main Content */}
       <div className="container mx-auto p-6 flex-grow">
@@ -110,6 +110,11 @@ const BukuPage = () => {
           onBookUpdated={handleBookUpdated}
           onError={handleError}
         />
+        <h2 className="underline text-blue-600 pl-6 mb-6 hover:text-blue-800 cursor-pointer">
+          <Link to="/bukuKategori">Tambahkan kategori dari buku disini!</Link>
+        </h2>
+
+        <h2 className="pl-6 text-3xl">Daftar Buku</h2>
 
         {/* Books List */}
         {loading && !editBook ? (

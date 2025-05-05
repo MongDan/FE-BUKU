@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router";
-import Navbar from "./Navbar";
+import { Navbar } from "../components/Navbar";
 
 const StatusBukuPage = () => {
   const [statusList, setStatusList] = useState([]);
