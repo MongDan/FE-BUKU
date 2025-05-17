@@ -1,20 +1,9 @@
-export const getTokenFromCookies = () => {
-  const token = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("token="))
-    ?.split("=")[1];
-  return token;
-};
-
 export const checkServerConnection = async () => {
   try {
-    const token = getTokenFromCookies();
     const response = await fetch("http://localhost:3000/", {
       method: "GET",
-      headers: {
-        Authorization: token ? `Bearer ${token}` : "",
-      },
-      signal: AbortSignal.timeout(5000),
+      credentials: "include",
+      signal: AbortSignal.timeout(5000)
     });
     console.log("Server connection test:", response.status);
     return response.ok;
@@ -25,13 +14,13 @@ export const checkServerConnection = async () => {
 };
 
 export const fetchBooks = async () => {
-  const token = getTokenFromCookies();
-
   try {
     const response = await fetch("http://localhost:3000/buku", {
+      method: "GET",
+      credentials: "include",
       headers: {
-        Authorization: token ? `Bearer ${token}` : "",
-      },
+        "Content-Type": "application/json"
+      }
     });
 
     console.log("Fetch books response status:", response.status);
@@ -51,13 +40,13 @@ export const fetchBooks = async () => {
 };
 
 export const fetchStatusOptions = async () => {
-  const token = getTokenFromCookies();
-
   try {
     const response = await fetch("http://localhost:3000/statusBuku", {
+      method: "GET",
+      credentials: "include",
       headers: {
-        Authorization: token ? `Bearer ${token}` : "",
-      },
+        "Content-Type": "application/json"
+      }
     });
 
     console.log("Fetch status options response status:", response.status);
@@ -85,16 +74,14 @@ export const fetchStatusOptions = async () => {
 };
 
 export const addBook = async (bookData) => {
-  const token = getTokenFromCookies();
-
   try {
     const response = await fetch("http://localhost:3000/buku", {
       method: "POST",
+      credentials: "include",
       headers: {
-        "Content-Type": "application/json",
-        Authorization: token ? `Bearer ${token}` : "",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify(bookData),
+      body: JSON.stringify(bookData)
     });
 
     console.log("Add book response status:", response.status);
@@ -116,16 +103,14 @@ export const addBook = async (bookData) => {
 };
 
 export const updateBook = async (bookId, bookData) => {
-  const token = getTokenFromCookies();
-
   try {
     const response = await fetch(`http://localhost:3000/buku/${bookId}`, {
       method: "PUT",
+      credentials: "include",
       headers: {
-        "Content-Type": "application/json",
-        Authorization: token ? `Bearer ${token}` : "",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify(bookData),
+      body: JSON.stringify(bookData)
     });
 
     console.log("Update book response status:", response.status);
@@ -145,14 +130,10 @@ export const updateBook = async (bookId, bookData) => {
 };
 
 export const deleteBook = async (bukuId) => {
-  const token = getTokenFromCookies();
-
   try {
     const response = await fetch(`http://localhost:3000/buku/${bukuId}`, {
       method: "DELETE",
-      headers: {
-        Authorization: token ? `Bearer ${token}` : "",
-      },
+      credentials: "include"
     });
 
     console.log("Delete book response status:", response.status);

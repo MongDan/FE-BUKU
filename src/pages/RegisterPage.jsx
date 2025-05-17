@@ -14,6 +14,7 @@ export default function Register() {
     try {
       const res = await fetch("http://localhost:3000/register", {
         method: "POST",
+        credentials: "include", // Sertakan kredensial untuk cookies
         headers: {
           "Content-Type": "application/json",
         },

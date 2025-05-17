@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
-import { fetchBooks, fetchStatusOptions, getTokenFromCookies} from "../services/api";
+import { fetchBooks, fetchStatusOptions } from "../services/api";
 import BookForm from "../components/BukuForm";
 import BookList from "../components/BookList";
 import ErrorMessage from "../components/ErrorMessage";
 import LoadingSpinner from "../components/LoadingSpinner";
 
-
 const BukuPage = () => {
-  const navigate = useNavigate();
   const location = useLocation();
   const [books, setBooks] = useState([]);
   const [statusOptions, setStatusOptions] = useState([]);

@@ -34,7 +34,7 @@ const StatusBukuPage = () => {
       } else {
         setError(data.message || "Gagal mengambil status buku.");
       }
-    } catch (err) {
+    } catch {
       setError("Gagal menghubungi server.");
     } finally {
       setLoading(false);
@@ -59,6 +59,7 @@ const StatusBukuPage = () => {
     try {
       const response = await fetch("http://localhost:3000/statusBuku", {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`
@@ -74,7 +75,7 @@ const StatusBukuPage = () => {
       } else {
         setError(data.message || "Gagal menambahkan status.");
       }
-    } catch (err) {
+    } catch {
       setError("Gagal menghubungi server.");
     } finally {
       setLoading(false);
@@ -91,6 +92,7 @@ const StatusBukuPage = () => {
     try {
       const response = await fetch(`http://localhost:3000/statusBuku/${id}`, {
         method: "DELETE",
+        credentials: "include",
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -103,7 +105,7 @@ const StatusBukuPage = () => {
       } else {
         setError(data.message || "Gagal menghapus status.");
       }
-    } catch (err) {
+    } catch {
       setError("Gagal menghubungi server.");
     } finally {
       setLoading(false);
@@ -131,6 +133,7 @@ const StatusBukuPage = () => {
         `http://localhost:3000/statusBuku/${editStatusId}`,
         {
           method: "PUT",
+          credentials: "include",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`
@@ -148,7 +151,7 @@ const StatusBukuPage = () => {
       } else {
         setError(data.message || "Gagal mengupdate status.");
       }
-    } catch (err) {
+    } catch {
       setError("Gagal menghubungi server.");
     } finally {
       setLoading(false);

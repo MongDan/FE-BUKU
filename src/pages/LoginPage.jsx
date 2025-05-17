@@ -14,10 +14,11 @@ function LoginPage() {
     try {
       const res = await fetch("http://localhost:3000/login", {
         method: "POST",
+        credentials: "include", // Include credentials for cookies
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password })
       });
 
       const data = await res.json();
@@ -72,7 +73,7 @@ function LoginPage() {
               className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               type="email"
               id="email"
-              placeholder="name@mail.com"
+              placeholder="name@gmail.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required

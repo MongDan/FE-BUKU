@@ -8,7 +8,7 @@ function UserPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    password: "",
+    password: ""
   });
   const [isEditing, setIsEditing] = useState(false);
 
@@ -32,39 +32,17 @@ function UserPage() {
     }
   };
 
-  // Fetch single user
-  const fetchUserById = async (userId) => {
-    try {
-      setLoading(true);
-      const response = await fetch(`${API_URL}/${userId}`);
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      const data = await response.json();
-      setSelectedUser(data.data);
-      setFormData({
-        name: data.data.name,
-        email: data.data.email,
-        password: "", // Password field empty since we don't receive it from API
-      });
-      setError(null);
-    } catch (err) {
-      setError("Failed to fetch user: " + err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   // Update user
   const updateUser = async (userId) => {
     try {
       setLoading(true);
       const response = await fetch(`${API_URL}/${userId}`, {
         method: "PUT",
+        credentials: "include",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(formData)
       });
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -90,6 +68,7 @@ function UserPage() {
       setLoading(true);
       const response = await fetch(`${API_URL}/${userId}`, {
         method: "DELETE",
+        credentials: "include"
       });
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -128,7 +107,7 @@ function UserPage() {
     setFormData({
       name: user.name,
       email: user.email,
-      password: "", // Password field empty since we don't receive it from API
+      password: "" // Password field empty since we don't receive it from API
     });
     setIsEditing(true);
   };
